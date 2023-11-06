@@ -10,10 +10,11 @@ import java.time.format.DateTimeFormatter;
 public class UserBoardResponseDTO {
     private String title;
     private String username;
-
+    private LocalDate localDate;
 
     public UserBoardResponseDTO(Board board) {
         this.title = board.getTitle();
         this.username = board.getUsername();
+        this.localDate = board.getLocalDate();
     }
 }

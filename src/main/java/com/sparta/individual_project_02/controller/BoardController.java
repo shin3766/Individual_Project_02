@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -43,6 +44,10 @@ public class BoardController {
         List<UserBoardResponseDTO> responseList = boardList.values().stream()
                 .map(UserBoardResponseDTO::new).toList();
 
+        //날짜 기준 내림차순 정렬
+        responseList.stream()
+                .sorted(Comparator.comparing(UserBoardResponseDTO::getLocalDate).reversed())
+                .collect(Collectors.toList());
 
         return responseList;
     }
